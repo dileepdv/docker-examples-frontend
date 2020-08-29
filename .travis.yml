@@ -1,0 +1,10 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t docker-examples-frontend -f Dockerfile.dev .
+
+scripts:
+    - docker run -e CI=true docker-examples-frontend npm run test
+    
